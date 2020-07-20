@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.8.0 on 2020-07-02 13:16 with libSBML version 5.18.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="Xu2003_Phosphoinositide_turnover" name="Xu2003_Phosphoinositide_turnover" substanceUnits="substance" volumeUnits="volume" areaUnits="area">
+    <listOfUnitDefinitions>
+      <unitDefinition id="molecules_um_2">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-2" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="molecule_per_volume">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-3" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="um2">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="uM_um3_molecules_1">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="-21" multiplier="1"/>
+          <unit kind="mole" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="item" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="s_1">
+        <listOfUnits>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="s">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="uM_1_s_1">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="mole" exponent="-1" scale="-6" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="uM">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="pA_um_2">
+        <listOfUnits>
+          <unit kind="dimensionless" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="ampere" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-2" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="um2_molecules_1_s_1">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="-6" multiplier="1"/>
+          <unit kind="item" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="volume">
+        <listOfUnits>
+          <unit kind="metre" exponent="3" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="area">
+        <listOfUnits>
+          <unit kind="metre" exponent="2" scale="-6" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="molecule">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="umol_um3_litre_1">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-21" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="molecules_um_2_s_1">
+        <listOfUnits>
+          <unit kind="item" exponent="1" scale="0" multiplier="1"/>
+          <unit kind="metre" exponent="-2" scale="-6" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="uM_s_1">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-6" multiplier="1"/>
+          <unit kind="litre" exponent="-1" scale="0" multiplier="1"/>
+          <unit kind="second" exponent="-1" scale="0" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="Extracellular" spatialDimensions="3" size="0.277777777777778" constant="true"/>
+      <compartment id="PM" spatialDimensions="3" size="0.5555555555556" units="um2" constant="true"/>
+      <compartment id="Cytosol" spatialDimensions="3" size="1" constant="true"/>
+      <compartment id="NM" spatialDimensions="3" size="0.111111111111111" units="um2" constant="true"/>
+      <compartment id="Nucleus" spatialDimensions="3" size="0.111111111111111" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="PIP2_PHGFP_PM" compartment="PM" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PH_GFP_Cyt" compartment="Cytosol" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PI_PM" compartment="PM" initialConcentration="142857" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="stim_PM" compartment="PM" initialConcentration="1" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="IP3_PHGFP_Cyt" compartment="Cytosol" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PIP2_PM" compartment="PM" initialConcentration="4000" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PIP_PM" compartment="PM" initialConcentration="2857" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="DAG_PM" compartment="PM" initialConcentration="2000" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="hv_Cytosol" compartment="Cytosol" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="IP3X_Cytosol" compartment="Cytosol" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="PLC_PM" compartment="PM" initialConcentration="100" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="PLC_act_PM" compartment="PM" initialConcentration="0" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="IP3_Cyt" compartment="Cytosol" initialConcentration="96.32" substanceUnits="substance" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="Ratebasal_PIPsyn_PIPSyn" units="s_1" constant="false"/>
+      <parameter id="kBasalSynPIP_PIPSyn" value="0.0055" units="s_1" constant="true"/>
+      <parameter id="PIP_basal_PIPSyn" value="2857" units="molecules_um_2" constant="true"/>
+      <parameter id="Ratestim_PIPsyn_PIPSyn" units="s_1" constant="false"/>
+      <parameter id="kStimSynPIP_PIPSyn" value="0.019" units="s_1" constant="true"/>
+      <parameter id="tauPIPsyn_PIPSyn" value="0.05" units="s" constant="true"/>
+      <parameter id="PIPsyndecay_PIPSyn" value="1" units="s" constant="true"/>
+      <parameter id="signal_PLCact" units="dimensionless" constant="false"/>
+      <parameter id="tau0_PLCact" value="0.05" units="second" constant="true"/>
+      <parameter id="stimdecay_PLCact" value="1" units="second" constant="true"/>
+      <parameter id="kr_PIP2PH_PIP2_PH" units="s_1" constant="false"/>
+      <parameter id="kf_PIP2PH_PIP2_PH" value="0.12" units="uM_1_s_1" constant="true"/>
+      <parameter id="KdPIP2PH_PIP2_PH" value="2" units="uM" constant="true"/>
+      <parameter id="Rate_PIP2Synbasal_PIP2Syn" units="s_1" constant="false"/>
+      <parameter id="kBasalSynPIP2_PIP2Syn" value="0.048" units="s_1" constant="true"/>
+      <parameter id="PIP2_basal_PIP2Syn" value="4000" units="molecules_um_2" constant="true"/>
+      <parameter id="Rate_PIP2SynStim_PIP2Syn" units="s_1" constant="false"/>
+      <parameter id="kStimSynPIP2_PIP2Syn" value="0.92" units="s_1" constant="true"/>
+      <parameter id="tauPIP2syn_PIP2Syn" value="0.05" units="s" constant="true"/>
+      <parameter id="PIP2syndecay_PIP2Syn" value="1" units="s" constant="true"/>
+      <parameter id="kr_IP3PH_IP3_PHGFP" units="s_1" constant="false"/>
+      <parameter id="kf_IP3PH_IP3_PHGFP" value="10" units="uM_1_s_1" constant="true"/>
+      <parameter id="KdIP3PH_IP3_PHGFP" value="2" units="uM" constant="true"/>
+      <parameter id="PIP2_hyd_k_PIP2hyd" value="2.4" units="um2_molecules_1_s_1" constant="true"/>
+      <parameter id="PLCact_KfPLCact" value="0.0005" units="um2_molecules_1_s_1" constant="true"/>
+      <parameter id="PLCact_krPLCact" value="0.1" units="s_1" constant="true"/>
+      <parameter id="PIP2_PH_hyd_k_PIP2PHhyd" value="0" units="um2_molecules_1_s_1" constant="true"/>
+      <parameter id="IP3deg_kIP3deg" value="0.08" units="s_1" constant="true"/>
+      <parameter id="IP3deg_IP3_basal" value="0.16" units="uM" constant="true"/>
+      <parameter id="KMOLE" value="0.00166112956810631" units="uM_um3_molecules_1" constant="true"/>
+      <parameter id="PIPSyn_I" value="0" units="pA_um_2" constant="true"/>
+      <parameter id="PIP2_hyd_I" value="0" units="pA_um_2" constant="true"/>
+      <parameter id="PLCact_I" value="0" units="pA_um_2" constant="true"/>
+      <parameter id="PIP2_PH_hyd_I" value="0" units="pA_um_2" constant="true"/>
+      <parameter id="PIP2_PH_I" value="0" units="pA_um_2" constant="true"/>
+      <parameter id="PIP2Syn_I" value="0" units="pA_um_2" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="Ratebasal_PIPsyn_PIPSyn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <apply>
+                <times/>
+                <cn> 0.581 </cn>
+                <ci> kBasalSynPIP_PIPSyn </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> -1 </cn>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> PIP_basal_PIPSyn </ci>
+                        <apply>
+                          <minus/>
+                          <ci> PIP_PM </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> PIP_basal_PIPSyn </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <lt/>
+                <ci> PIP_PM </ci>
+                <ci> PIP_basal_PIPSyn </ci>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Ratestim_PIPsyn_PIPSyn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <apply>
+                <times/>
+                <ci> kStimSynPIP_PIPSyn </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <apply>
+                          <minus/>
+                          <ci> tauPIPsyn_PIPSyn </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> PIPsyndecay_PIPSyn </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <gt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> tauPIPsyn_PIPSyn </ci>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="signal_PLCact">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <apply>
+                <exp/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                      <apply>
+                        <minus/>
+                        <ci> tau0_PLCact </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <cn type="integer"> 1 </cn>
+                      <ci> stimdecay_PLCact </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <gt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> tau0_PLCact </ci>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="kr_PIP2PH_PIP2_PH">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> kf_PIP2PH_PIP2_PH </ci>
+            <ci> KdPIP2PH_PIP2_PH </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Rate_PIP2Synbasal_PIP2Syn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <apply>
+                <times/>
+                <cn> 0.581 </cn>
+                <ci> kBasalSynPIP2_PIP2Syn </ci>
+                <apply>
+                  <plus/>
+                  <cn type="integer"> -1 </cn>
+                  <apply>
+                    <exp/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> PIP2_basal_PIP2Syn </ci>
+                        <apply>
+                          <minus/>
+                          <ci> PIP2_PM </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> PIP2_basal_PIP2Syn </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <lt/>
+                <ci> PIP2_PM </ci>
+                <ci> PIP2_basal_PIP2Syn </ci>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Rate_PIP2SynStim_PIP2Syn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <piecewise>
+            <piece>
+              <apply>
+                <times/>
+                <ci> kStimSynPIP2_PIP2Syn </ci>
+                <apply>
+                  <exp/>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                        <apply>
+                          <minus/>
+                          <ci> tauPIP2syn_PIP2Syn </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <divide/>
+                        <cn type="integer"> 1 </cn>
+                        <ci> PIP2syndecay_PIP2Syn </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <gt/>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+                <ci> tauPIP2syn_PIP2Syn </ci>
+              </apply>
+            </piece>
+            <otherwise>
+              <cn type="integer"> 0 </cn>
+            </otherwise>
+          </piecewise>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="kr_IP3PH_IP3_PHGFP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> kf_IP3PH_IP3_PHGFP </ci>
+            <ci> KdIP3PH_IP3_PHGFP </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="PIPSyn" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PI_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PIP_PM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> Ratebasal_PIPsyn_PIPSyn </ci>
+                <ci> Ratestim_PIPsyn_PIPSyn </ci>
+              </apply>
+              <ci> PI_PM </ci>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PIP2_hyd" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PIP2_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="DAG_PM" stoichiometry="1" constant="true"/>
+          <speciesReference species="IP3_Cyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="PLC_act_PM"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> PIP2_hyd_k_PIP2hyd </ci>
+              <ci> PIP2_PM </ci>
+              <ci> PLC_act_PM </ci>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PLCact" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PLC_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PLC_act_PM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="stim_PM"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> PLCact_KfPLCact </ci>
+                  <ci> PLC_PM </ci>
+                  <ci> stim_PM </ci>
+                  <ci> signal_PLCact </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> PLCact_krPLCact </ci>
+                    <ci> PLC_act_PM </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PIP2_PH_hyd" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PIP2_PHGFP_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PH_GFP_Cyt" stoichiometry="1" constant="true"/>
+          <speciesReference species="IP3_Cyt" stoichiometry="1" constant="true"/>
+          <speciesReference species="DAG_PM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="PLC_act_PM"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> PIP2_PH_hyd_k_PIP2PHhyd </ci>
+              <ci> PLC_act_PM </ci>
+              <ci> PIP2_PHGFP_PM </ci>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PIP2_PH" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PH_GFP_Cyt" stoichiometry="1" constant="true"/>
+          <speciesReference species="PIP2_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PIP2_PHGFP_PM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> kf_PIP2PH_PIP2_PH </ci>
+                  <cn> 0.00166112956810631 </cn>
+                  <ci> PH_GFP_Cyt </ci>
+                  <ci> PIP2_PM </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> kr_PIP2PH_PIP2_PH </ci>
+                    <ci> PIP2_PHGFP_PM </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="IP3deg" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="IP3_Cyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> IP3deg_kIP3deg </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <cn> 0.00166112956810631 </cn>
+                  <ci> IP3_Cyt </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <ci> IP3deg_IP3_basal </ci>
+                </apply>
+              </apply>
+              <ci> Cytosol </ci>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <divide/>
+                <cn type="integer"> 1 </cn>
+                <ci> KMOLE </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="PIP2Syn" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="PIP_PM" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PIP2_PM" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <ci> Rate_PIP2Synbasal_PIP2Syn </ci>
+                <ci> Rate_PIP2SynStim_PIP2Syn </ci>
+              </apply>
+              <ci> PIP_PM </ci>
+              <ci> PM </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="IP3_PHGFP" name="IP3-PHGFP" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="IP3_Cyt" stoichiometry="1" constant="true"/>
+          <speciesReference species="PH_GFP_Cyt" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="IP3_PHGFP_Cyt" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <apply>
+                <plus/>
+                <apply>
+                  <times/>
+                  <ci> kf_IP3PH_IP3_PHGFP </ci>
+                  <cn> 0.00166112956810631 </cn>
+                  <ci> IP3_Cyt </ci>
+                  <cn> 0.00166112956810631 </cn>
+                  <ci> PH_GFP_Cyt </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <times/>
+                    <ci> kr_IP3PH_IP3_PHGFP </ci>
+                    <cn> 0.00166112956810631 </cn>
+                    <ci> IP3_PHGFP_Cyt </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> Cytosol </ci>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <divide/>
+                <cn type="integer"> 1 </cn>
+                <ci> KMOLE </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

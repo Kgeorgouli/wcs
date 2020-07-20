@@ -1,0 +1,37 @@
+model *Eqn29_model()
+  //Compartments and Species:
+  compartment default;
+  //substanceOnly species Y in default, Z in default; 
+  species Y in default, Z in default; 
+
+  //Reactions
+  r1: Y => 2 Y; 5 * Y;      // 5 / Xbar * Xbar
+  r2: Y + Y => Z; k * Y * (Y-1) / 2;
+
+  // Species initializations:
+  Y = 1000/default;
+  //Y has count;
+  Z = 0;
+  //Z has count;
+
+ // Compartment initializations:
+  default = 1;
+  default has volume;
+
+  // Variable initializations:
+  Xbar = 10;
+  Xbar has count;
+  k = 0.005;
+  k has rate;
+  
+
+  // Other declarations:
+  const default;
+
+  //Unit definitions
+  unit count=item;
+  unit volume=litre;
+  unit rate=item/second;
+
+
+end

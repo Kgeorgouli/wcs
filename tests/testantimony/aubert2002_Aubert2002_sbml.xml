@@ -1,0 +1,1762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by libAntimony version v2.8.0 on 2020-07-02 13:16 with libSBML version 5.18.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="Aubert2002" name="Aubert2002" substanceUnits="substance" volumeUnits="volume">
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Constant_flux__irreversible">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> v </ci>
+            </bvar>
+            <ci> v </ci>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_pump">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> S_V </ci>
+            </bvar>
+            <bvar>
+              <ci> k_pump </ci>
+            </bvar>
+            <bvar>
+              <ci> ATP </ci>
+            </bvar>
+            <bvar>
+              <ci> NA </ci>
+            </bvar>
+            <bvar>
+              <ci> Km_pump </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> S_V </ci>
+                <ci> k_pump </ci>
+                <ci> ATP </ci>
+                <ci> NA </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> ATP </ci>
+                  <ci> Km_pump </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> S_V </ci>
+            </bvar>
+            <bvar>
+              <ci> gNA </ci>
+            </bvar>
+            <bvar>
+              <ci> F </ci>
+            </bvar>
+            <bvar>
+              <ci> RT_F </ci>
+            </bvar>
+            <bvar>
+              <ci> Na_e </ci>
+            </bvar>
+            <bvar>
+              <ci> Na </ci>
+            </bvar>
+            <bvar>
+              <ci> Vm </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> S_V </ci>
+              <apply>
+                <divide/>
+                <ci> gNA </ci>
+                <ci> F </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> RT_F </ci>
+                  <apply>
+                    <ln/>
+                    <apply>
+                      <divide/>
+                      <ci> Na_e </ci>
+                      <ci> Na </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> Vm </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_GLC_m">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Tmax </ci>
+            </bvar>
+            <bvar>
+              <ci> GLC_c </ci>
+            </bvar>
+            <bvar>
+              <ci> Kt_GLC </ci>
+            </bvar>
+            <bvar>
+              <ci> GLC_i </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Tmax </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> GLC_c </ci>
+                  <apply>
+                    <plus/>
+                    <ci> GLC_c </ci>
+                    <ci> Kt_GLC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> GLC_i </ci>
+                  <apply>
+                    <plus/>
+                    <ci> GLC_i </ci>
+                    <ci> Kt_GLC </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="function_2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ATP </ci>
+            </bvar>
+            <bvar>
+              <ci> GLC_i </ci>
+            </bvar>
+            <bvar>
+              <ci> Kg </ci>
+            </bvar>
+            <bvar>
+              <ci> KI_ATP </ci>
+            </bvar>
+            <bvar>
+              <ci> nH </ci>
+            </bvar>
+            <bvar>
+              <ci> kHK_PFK </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kHK_PFK </ci>
+                <ci> ATP </ci>
+                <apply>
+                  <divide/>
+                  <ci> GLC_i </ci>
+                  <apply>
+                    <plus/>
+                    <ci> GLC_i </ci>
+                    <ci> Kg </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> ATP </ci>
+                    <ci> KI_ATP </ci>
+                  </apply>
+                  <ci> nH </ci>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_PGK">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> kPGK </ci>
+            </bvar>
+            <bvar>
+              <ci> GAP </ci>
+            </bvar>
+            <bvar>
+              <ci> ADP </ci>
+            </bvar>
+            <bvar>
+              <ci> NAD </ci>
+            </bvar>
+            <bvar>
+              <ci> NADH </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> kPGK </ci>
+              <ci> GAP </ci>
+              <ci> ADP </ci>
+              <apply>
+                <divide/>
+                <ci> NAD </ci>
+                <ci> NADH </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_LAC_m">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Tmax </ci>
+            </bvar>
+            <bvar>
+              <ci> LAC_i </ci>
+            </bvar>
+            <bvar>
+              <ci> Kt_LAC </ci>
+            </bvar>
+            <bvar>
+              <ci> LAC_c </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> Tmax </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <divide/>
+                  <ci> LAC_i </ci>
+                  <apply>
+                    <plus/>
+                    <ci> LAC_i </ci>
+                    <ci> Kt_LAC </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> LAC_c </ci>
+                  <apply>
+                    <plus/>
+                    <ci> LAC_c </ci>
+                    <ci> Kt_LAC </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_O2_m">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> PS_V </ci>
+            </bvar>
+            <bvar>
+              <ci> KO2 </ci>
+            </bvar>
+            <bvar>
+              <ci> HbOP </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_c </ci>
+            </bvar>
+            <bvar>
+              <ci> nh </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_i </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> PS_V </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> KO2 </ci>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <divide/>
+                        <ci> HbOP </ci>
+                        <ci> O2_c </ci>
+                      </apply>
+                      <cn type="integer"> 1 </cn>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <cn type="integer"> -1 </cn>
+                      <ci> nh </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <ci> O2_i </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_O2_c">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> F_in </ci>
+            </bvar>
+            <bvar>
+              <ci> V_cap </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_a </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_c </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> F_in </ci>
+                </apply>
+                <ci> V_cap </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> O2_a </ci>
+                <ci> O2_c </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_GLC_c">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> F_in </ci>
+            </bvar>
+            <bvar>
+              <ci> V_cap </ci>
+            </bvar>
+            <bvar>
+              <ci> GLC_a </ci>
+            </bvar>
+            <bvar>
+              <ci> GLC_c </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> F_in </ci>
+                </apply>
+                <ci> V_cap </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> GLC_a </ci>
+                <ci> GLC_c </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_LAC_c">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> F_in </ci>
+            </bvar>
+            <bvar>
+              <ci> V_cap </ci>
+            </bvar>
+            <bvar>
+              <ci> LAC_a </ci>
+            </bvar>
+            <bvar>
+              <ci> LAC_c </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 2 </cn>
+                  <ci> F_in </ci>
+                </apply>
+                <ci> V_cap </ci>
+              </apply>
+              <apply>
+                <minus/>
+                <ci> LAC_a </ci>
+                <ci> LAC_c </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_dHb_in">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> F_in </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_a </ci>
+            </bvar>
+            <bvar>
+              <ci> O2_c </ci>
+            </bvar>
+            <apply>
+              <times/>
+              <ci> F_in </ci>
+              <cn type="integer"> 2 </cn>
+              <apply>
+                <minus/>
+                <ci> O2_a </ci>
+                <ci> O2_c </ci>
+              </apply>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="v_dHb_out">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> F_out </ci>
+            </bvar>
+            <bvar>
+              <ci> dHb </ci>
+            </bvar>
+            <bvar>
+              <ci> V_v </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> F_out </ci>
+                <ci> dHb </ci>
+              </apply>
+              <ci> V_v </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="volume">
+        <listOfUnits>
+          <unit kind="litre" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment id="compartment_1" name="Tissue" spatialDimensions="3" size="1" constant="true"/>
+      <compartment id="compartment_2" name="Arteries" spatialDimensions="3" size="1" constant="true"/>
+      <compartment id="compartment_3" name="Capillaries" spatialDimensions="3" size="1" constant="true"/>
+      <compartment id="compartment_4" name="Venous balloon" spatialDimensions="3" size="0.0237" constant="false"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="species_1" name="Na+" compartment="compartment_1" initialAmount="15" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_2" name="ATP" compartment="compartment_1" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_3" name="ADP" compartment="compartment_1" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_4" name="GLC" compartment="compartment_1" initialAmount="1.2" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_5" name="GAP" compartment="compartment_1" initialAmount="0.0057" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_6" name="NAD+" compartment="compartment_1" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_7" name="NADH" compartment="compartment_1" initialAmount="0.026" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_8" name="PYR" compartment="compartment_1" initialAmount="0.16" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_9" name="PEP" compartment="compartment_1" initialAmount="0.02" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_10" name="LAC" compartment="compartment_1" initialAmount="1" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_11" name="PCr" compartment="compartment_1" initialAmount="5" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_12" name="Cr" compartment="compartment_1" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_13" name="O2" compartment="compartment_1" initialAmount="0.0262" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_14" name="O2" compartment="compartment_2" initialAmount="8.34" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_15" name="GLC" compartment="compartment_2" initialAmount="4.8" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_16" name="LAC" compartment="compartment_2" initialAmount="0.313" hasOnlySubstanceUnits="true" boundaryCondition="true" constant="false"/>
+      <species id="species_17" name="GLC" compartment="compartment_3" initialAmount="4.56" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_18" name="LAC" compartment="compartment_3" initialAmount="0.35" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="species_19" name="O2" compartment="compartment_3" initialAmount="7.01" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="dHb" compartment="compartment_3" initialAmount="0.0630000000000001" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="parameter_37" name="F_in" constant="false"/>
+      <parameter id="parameter_36" name="F0" value="0.012" constant="true"/>
+      <parameter id="is_rising" value="1" constant="false"/>
+      <parameter id="slope_up" constant="false"/>
+      <parameter id="is_maximum" value="0" constant="false"/>
+      <parameter id="maximum" constant="false"/>
+      <parameter id="is_falling" value="0" constant="false"/>
+      <parameter id="slope_down" constant="false"/>
+      <parameter id="F_out" constant="false"/>
+      <parameter id="Compartment_7" name="Initial for Venous balloon" constant="true"/>
+      <parameter id="parameter_7" name="ATP" value="2.2" constant="false"/>
+      <parameter id="parameter_10" name="ADP" constant="false"/>
+      <parameter id="parameter_11" name="qAK" value="0.92" constant="true"/>
+      <parameter id="parameter_12" name="A" value="2.212" constant="true"/>
+      <parameter id="parameter_22" name="NAD+" constant="false"/>
+      <parameter id="parameter_21" name="N" value="0.212" constant="true"/>
+      <parameter id="parameter_31" name="C" value="10" constant="true"/>
+      <parameter id="dAMP_dATP" name="dAMP/dATP" constant="false"/>
+      <parameter id="parameter_13" name="AMP" constant="false"/>
+      <parameter id="ModelValue_51" name="Initial for maximum" constant="true"/>
+      <parameter id="ModelValue_52" name="Initial for t_on" constant="true"/>
+      <parameter id="ModelValue_35" name="Initial for F0" constant="true"/>
+      <parameter id="ModelValue_50" name="Initial for alpha_F_in" constant="true"/>
+      <parameter id="t_on" value="5" constant="true"/>
+      <parameter id="t_end" value="360" constant="true"/>
+      <parameter id="v_Mito_H3" constant="false"/>
+      <parameter id="V_max_Mito" value="0.05233" constant="true"/>
+      <parameter id="Km_Mito" name="Km,Mito" value="0.05" constant="true"/>
+      <parameter id="KI_Mito" name="KI,Mito" value="183.3" constant="true"/>
+      <parameter id="n_Mito" value="0.1" constant="true"/>
+      <parameter id="K_O2_Mito" value="0.001" constant="true"/>
+      <parameter id="rCBF" constant="false"/>
+      <parameter id="rCMRO2" constant="false"/>
+      <parameter id="rVv" constant="false"/>
+      <parameter id="O2c_bar" constant="false"/>
+      <parameter id="ratioO2c_bar" constant="false"/>
+      <parameter id="ModelValue_60" name="Initial for O2c_bar" constant="true"/>
+      <parameter id="parameter_19" name="Kg" value="0.05" constant="true"/>
+      <parameter id="parameter_17" name="KI,ATP" value="1" constant="true"/>
+      <parameter id="parameter_18" name="nH" value="4" constant="true"/>
+      <parameter id="parameter_16" name="kHK-PFK" value="0.12" constant="true"/>
+      <parameter id="parameter_20" name="kPGK" value="42.6" constant="true"/>
+      <parameter id="parameter_23" name="kPK" value="86.7" constant="true"/>
+      <parameter id="parameter_1" name="S/V" value="90000" constant="true"/>
+      <parameter id="parameter_8" name="k_pump" value="2.9e-07" constant="true"/>
+      <parameter id="parameter_9" name="Km_pump" value="0.5" constant="true"/>
+      <parameter id="parameter_29" name="k+CK" value="3666" constant="true"/>
+      <parameter id="parameter_30" name="k-CK" value="20" constant="true"/>
+      <parameter id="ATPases_v" value="0.149" constant="true"/>
+      <parameter id="parameter_2" name="gNa" value="0.0039" constant="true"/>
+      <parameter id="parameter_3" name="F" value="96500" constant="true"/>
+      <parameter id="parameter_4" name="RT/F" value="26.73" constant="true"/>
+      <parameter id="parameter_6" name="Na_extracellular" value="150" constant="true"/>
+      <parameter id="parameter_5" name="Vm" value="-70" constant="true"/>
+      <parameter id="parameter_14" name="Tmax,GLC" value="0.0476" constant="true"/>
+      <parameter id="parameter_15" name="Kt,GLC" value="9" constant="true"/>
+      <parameter id="parameter_24" name="k+LDH" value="2000" constant="true"/>
+      <parameter id="parameter_25" name="k-LDH" value="44.8" constant="true"/>
+      <parameter id="parameter_26" name="Tmax,LAC" value="0.00628" constant="true"/>
+      <parameter id="parameter_27" name="Kt,LAC" value="0.5" constant="true"/>
+      <parameter id="parameter_32" name="PS/V" value="1.6" constant="true"/>
+      <parameter id="parameter_33" name="KO2" value="0.0361" constant="true"/>
+      <parameter id="parameter_34" name="Hb*OP" value="8.6" constant="true"/>
+      <parameter id="parameter_35" name="nh" value="2.73" constant="true"/>
+      <parameter id="parameter_38" name="V_cap" value="0.0055" constant="true"/>
+      <parameter id="v_stim_constant" value="0.23" constant="false"/>
+      <parameter id="ModelValue_53" name="Initial for t_end" constant="true"/>
+      <parameter id="parameter_28" name="vATPase" value="0.149" constant="true"/>
+      <parameter id="parameter_47" name="v_Mito" value="0.0192" constant="true"/>
+      <parameter id="alpha_F_in" value="0.5" constant="true"/>
+    </listOfParameters>
+    <listOfInitialAssignments>
+      <initialAssignment symbol="Compartment_7">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> compartment_4 </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_51">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> maximum </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_52">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> t_on </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_35">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> parameter_36 </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_50">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> alpha_F_in </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_60">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> O2c_bar </ci>
+        </math>
+      </initialAssignment>
+      <initialAssignment symbol="ModelValue_53">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> t_end </ci>
+        </math>
+      </initialAssignment>
+    </listOfInitialAssignments>
+    <listOfRules>
+      <assignmentRule variable="species_2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> parameter_7 </ci>
+            <ci> compartment_1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="species_3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> parameter_10 </ci>
+            <ci> compartment_1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="species_6">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> parameter_22 </ci>
+            <ci> compartment_1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="species_12">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <ci> parameter_31 </ci>
+              <apply>
+                <divide/>
+                <ci> species_11 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+            </apply>
+            <ci> compartment_1 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="compartment_4">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> parameter_37 </ci>
+            <ci> F_out </ci>
+          </apply>
+        </math>
+      </rateRule>
+      <assignmentRule variable="parameter_37">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> parameter_36 </ci>
+            <apply>
+              <times/>
+              <ci> is_rising </ci>
+              <ci> slope_up </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> is_maximum </ci>
+              <ci> maximum </ci>
+            </apply>
+            <apply>
+              <times/>
+              <ci> is_falling </ci>
+              <ci> slope_down </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="slope_up">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> ModelValue_51 </ci>
+              <ci> ModelValue_52 </ci>
+            </apply>
+            <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="maximum">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> ModelValue_35 </ci>
+            <ci> ModelValue_50 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="slope_down">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> maximum </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <ci> t_on </ci>
+                  <ci> t_end </ci>
+                </apply>
+                <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              </apply>
+            </apply>
+            <ci> t_on </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="F_out">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> parameter_36 </ci>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> compartment_4 </ci>
+                    <ci> Compartment_7 </ci>
+                  </apply>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> compartment_4 </ci>
+                      <ci> Compartment_7 </ci>
+                    </apply>
+                    <cn> -0.5 </cn>
+                  </apply>
+                  <cn type="integer"> 35 </cn>
+                  <apply>
+                    <divide/>
+                    <cn type="integer"> 1 </cn>
+                    <ci> Compartment_7 </ci>
+                  </apply>
+                  <ci> parameter_37 </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <times/>
+                <ci> parameter_36 </ci>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> compartment_4 </ci>
+                    <ci> Compartment_7 </ci>
+                  </apply>
+                  <cn> -0.5 </cn>
+                </apply>
+                <cn type="integer"> 35 </cn>
+                <apply>
+                  <divide/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> Compartment_7 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <rateRule variable="parameter_7">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <apply>
+                  <minus/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> -2 </cn>
+                      <ci> reaction_4 </ci>
+                    </apply>
+                    <ci> reaction_5 </ci>
+                    <ci> reaction_6 </ci>
+                  </apply>
+                  <ci> reaction_2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <cn type="integer"> 15 </cn>
+                  <ci> mitochondrial_respiration </ci>
+                </apply>
+                <ci> reaction_9 </ci>
+              </apply>
+              <ci> ATPases </ci>
+            </apply>
+            <apply>
+              <power/>
+              <apply>
+                <minus/>
+                <cn type="integer"> 1 </cn>
+                <ci> dAMP_dATP </ci>
+              </apply>
+              <cn type="integer"> -1 </cn>
+            </apply>
+          </apply>
+        </math>
+      </rateRule>
+      <assignmentRule variable="parameter_10">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <ci> parameter_7 </ci>
+              <cn type="integer"> 2 </cn>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <ci> parameter_11 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <power/>
+                    <ci> parameter_11 </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <cn type="integer"> 4 </cn>
+                    <ci> parameter_11 </ci>
+                    <apply>
+                      <minus/>
+                      <apply>
+                        <divide/>
+                        <ci> parameter_12 </ci>
+                        <ci> parameter_7 </ci>
+                      </apply>
+                      <cn type="integer"> 1 </cn>
+                    </apply>
+                  </apply>
+                </apply>
+                <cn> 0.5 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="parameter_22">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> parameter_21 </ci>
+            <apply>
+              <divide/>
+              <ci> species_7 </ci>
+              <ci> compartment_1 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="dAMP_dATP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <minus/>
+              <apply>
+                <plus/>
+                <cn type="integer"> -1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> parameter_11 </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <apply>
+                  <divide/>
+                  <cn type="integer"> 1 </cn>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <power/>
+                      <ci> parameter_11 </ci>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 4 </cn>
+                      <ci> parameter_11 </ci>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <divide/>
+                          <ci> parameter_12 </ci>
+                          <ci> parameter_7 </ci>
+                        </apply>
+                        <cn type="integer"> 1 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <cn type="rational"> 1 <sep/> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> parameter_11 </ci>
+                <ci> parameter_12 </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> parameter_7 </ci>
+                <apply>
+                  <power/>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <power/>
+                      <ci> parameter_11 </ci>
+                      <cn type="integer"> 2 </cn>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <cn type="integer"> 4 </cn>
+                      <ci> parameter_11 </ci>
+                      <apply>
+                        <minus/>
+                        <apply>
+                          <divide/>
+                          <ci> parameter_12 </ci>
+                          <ci> parameter_7 </ci>
+                        </apply>
+                        <cn type="integer"> 1 </cn>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <cn type="rational"> 1 <sep/> 2 </cn>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="parameter_13">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <minus/>
+              <ci> parameter_12 </ci>
+              <ci> parameter_7 </ci>
+            </apply>
+            <ci> parameter_10 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v_Mito_H3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> V_max_Mito </ci>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <ci> species_8 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> Km_Mito </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_8 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <cn type="integer"> 1 </cn>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> parameter_7 </ci>
+                    <apply>
+                      <times/>
+                      <ci> parameter_10 </ci>
+                      <ci> KI_Mito </ci>
+                    </apply>
+                  </apply>
+                  <ci> n_Mito </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <ci> species_13 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> K_O2_Mito </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_13 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rCBF">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> parameter_37 </ci>
+            <ci> ModelValue_35 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rCMRO2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> mitochondrial_respiration </ci>
+            <cn> 0.0192 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="rVv">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> compartment_4 </ci>
+            <ci> Compartment_7 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="O2c_bar">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <apply>
+              <times/>
+              <cn type="integer"> 2 </cn>
+              <apply>
+                <divide/>
+                <ci> species_19 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <ci> species_14 </ci>
+              <ci> compartment_2 </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="ratioO2c_bar">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> O2c_bar </ci>
+            <ci> ModelValue_60 </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="mitochondrial_respiration" name="mitochondrial respiration" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_8" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_7" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_13" stoichiometry="3" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v_Mito_H3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_4" name="Hexokinase-phosphofructokinase system" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_4" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_5" stoichiometry="2" constant="true"/>
+          <speciesReference species="species_3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_2 </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_2 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_4 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <ci> parameter_19 </ci>
+                <ci> parameter_17 </ci>
+                <ci> parameter_18 </ci>
+                <ci> parameter_16 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_5" name="Phosphoglycerate kinase" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_5" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_6" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_7" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_9" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="species_3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> v_PGK </ci>
+                <ci> parameter_20 </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_5 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_3 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_6 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_7 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_6" name="Pyruvate kinase" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_3" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_9" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_8" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> parameter_23 </ci>
+              <ci> species_3 </ci>
+              <apply>
+                <divide/>
+                <ci> species_9 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_2" name="Na/K - pump" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_1" stoichiometry="3" constant="true"/>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> v_pump </ci>
+                <ci> parameter_1 </ci>
+                <ci> parameter_8 </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_2 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_1 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <ci> parameter_9 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_9" name="Creatine Kinase" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_11" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_12" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> parameter_29 </ci>
+                  <apply>
+                    <divide/>
+                    <ci> species_11 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> species_3 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> parameter_30 </ci>
+                  <apply>
+                    <divide/>
+                    <ci> species_12 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> species_2 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ATPases" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> ATPases_v </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_1" name="Sodium leak" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="species_1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> function_1 </ci>
+                <ci> parameter_1 </ci>
+                <ci> parameter_2 </ci>
+                <ci> parameter_3 </ci>
+                <ci> parameter_4 </ci>
+                <ci> parameter_6 </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_1 </ci>
+                  <ci> compartment_1 </ci>
+                </apply>
+                <ci> parameter_5 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_3" name="Blood-brain transport of glucose" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_17" stoichiometry="100" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_GLC_m </ci>
+              <ci> parameter_14 </ci>
+              <apply>
+                <divide/>
+                <ci> species_17 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+              <ci> parameter_15 </ci>
+              <apply>
+                <divide/>
+                <ci> species_4 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_7" name="Lactate dehydrogenase" reversible="true" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_8" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_7" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_10" stoichiometry="1" constant="true"/>
+          <speciesReference species="species_6" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <minus/>
+                <apply>
+                  <times/>
+                  <ci> parameter_24 </ci>
+                  <apply>
+                    <divide/>
+                    <ci> species_8 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> species_7 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> parameter_25 </ci>
+                  <apply>
+                    <divide/>
+                    <ci> species_10 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                  <apply>
+                    <divide/>
+                    <ci> species_6 </ci>
+                    <ci> compartment_1 </ci>
+                  </apply>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_8" name="Blood-brain transport of lactate" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_10" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_18" stoichiometry="100" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_LAC_m </ci>
+              <ci> parameter_26 </ci>
+              <apply>
+                <divide/>
+                <ci> species_10 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+              <ci> parameter_27 </ci>
+              <apply>
+                <divide/>
+                <ci> species_18 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_10" name="Blood-brain transport of oxygen" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_19" stoichiometry="100" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_13" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_O2_m </ci>
+              <ci> parameter_32 </ci>
+              <ci> parameter_33 </ci>
+              <ci> parameter_34 </ci>
+              <apply>
+                <divide/>
+                <ci> species_19 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+              <ci> parameter_35 </ci>
+              <apply>
+                <divide/>
+                <ci> species_13 </ci>
+                <ci> compartment_1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_11" name="Blood flow contribution to O2 variation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_14" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_19" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_O2_c </ci>
+              <ci> parameter_37 </ci>
+              <ci> parameter_38 </ci>
+              <apply>
+                <divide/>
+                <ci> species_14 </ci>
+                <ci> compartment_2 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> species_19 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_12" name="Blood flow contribution to GLC_c variation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_15" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_17" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_GLC_c </ci>
+              <ci> parameter_37 </ci>
+              <ci> parameter_38 </ci>
+              <apply>
+                <divide/>
+                <ci> species_15 </ci>
+                <ci> compartment_2 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> species_17 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reaction_13" name="Blood flow contribution to LAC_c variation" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="species_16" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="species_18" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <ci> v_LAC_c </ci>
+              <ci> parameter_37 </ci>
+              <ci> parameter_38 </ci>
+              <apply>
+                <divide/>
+                <ci> species_16 </ci>
+                <ci> compartment_2 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> species_18 </ci>
+                <ci> compartment_3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="Na__inflow_after_stimulation" name="Na+ inflow after stimulation" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="species_1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_1 </ci>
+              <apply>
+                <ci> Constant_flux__irreversible </ci>
+                <ci> v_stim_constant </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="inflow_of_dHb" name="inflow of dHb" reversible="false" fast="false">
+        <listOfProducts>
+          <speciesReference species="dHb" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="species_14"/>
+          <modifierSpeciesReference species="species_19"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_3 </ci>
+              <apply>
+                <ci> v_dHb_in </ci>
+                <ci> parameter_37 </ci>
+                <apply>
+                  <divide/>
+                  <ci> species_14 </ci>
+                  <ci> compartment_2 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> species_19 </ci>
+                  <ci> compartment_3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="outflow_of_dHb" name="outflow of dHb" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="dHb" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> compartment_3 </ci>
+              <apply>
+                <ci> v_dHb_out </ci>
+                <ci> F_out </ci>
+                <apply>
+                  <divide/>
+                  <ci> dHb </ci>
+                  <ci> compartment_3 </ci>
+                </apply>
+                <ci> compartment_4 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+    <listOfEvents>
+      <event id="from_increase_to_stable" name="from increase to stable" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <eq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> ModelValue_52 </ci>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="is_maximum">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="is_rising">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="from_stable_to_decrease__end_of_stimulation" name="from stable to decrease (end of stimulation)" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <eq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <ci> ModelValue_53 </ci>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="is_maximum">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="is_falling">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 1 </cn>
+            </math>
+          </eventAssignment>
+          <eventAssignment variable="v_stim_constant">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+      <event id="from_decrease_to_at_rest" name="from decrease to at_rest" useValuesFromTriggerTime="true">
+        <trigger initialValue="true" persistent="true">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <eq/>
+              <csymbol encoding="text" definitionURL="http://www.sbml.org/sbml/symbols/time"> time </csymbol>
+              <apply>
+                <plus/>
+                <ci> ModelValue_53 </ci>
+                <ci> ModelValue_52 </ci>
+              </apply>
+            </apply>
+          </math>
+        </trigger>
+        <listOfEventAssignments>
+          <eventAssignment variable="is_falling">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <cn type="integer"> 0 </cn>
+            </math>
+          </eventAssignment>
+        </listOfEventAssignments>
+      </event>
+    </listOfEvents>
+  </model>
+</sbml>

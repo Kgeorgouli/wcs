@@ -1,0 +1,68 @@
+// Created by libAntimony v2.8.0
+model *Three_ODE_CellCycle_model()
+
+  // Compartments and Species:
+  compartment default;
+  species CDK1 in default, PLK1 in default, APC in default;
+  substanceOnly species $inact_CDK1 in default, $inact_PLK1 in default, $inact_APC in default;
+
+  // Reactions:
+  re1: $inact_CDK1 => CDK1; a1;
+  re2: CDK1 => $inact_CDK1; b1*CDK1*(APC^n1/(K1^n1 + APC^n1));
+  re3: $inact_PLK1 => PLK1; a2*(1 - PLK1)*(CDK1^n2/(K2^n2 + CDK1^n2));
+  re4: PLK1 => $inact_PLK1; b2*PLK1;
+  re5: $inact_APC => APC; a3*(1 - APC)*(PLK1^n3/(K3^n3 + PLK1^n3));
+  re6: APC => $inact_APC; b3*APC;
+
+  // Species initializations:
+  CDK1 = 0;
+  PLK1 = 0;
+  APC = 0;
+  inact_CDK1 = 1/default;
+  inact_PLK1 = 1/default;
+  inact_APC = 1/default;
+
+  // Compartment initializations:
+  default = 1;
+  default has volume;
+
+  // Variable initializations:
+  a1 = 0.1;
+  a1 has substance;
+  a2 = 3;
+  a2 has substance;
+  a3 = 3;
+  a3 has substance;
+  b1 = 3;
+  b1 has substance;
+  b2 = 1;
+  b2 has substance;
+  b3 = 1;
+  b3 has substance;
+  K1 = 0.5;
+  K1 has substance;
+  K2 = 0.5;
+  K2 has substance;
+  K3 = 0.5;
+  K3 has substance;
+  n1 = 8;
+  n1 has substance;
+  n2 = 8;
+  n2 has substance;
+  n3 = 8;
+  n3 has substance;
+
+  // Other declarations:
+  const default, a1, a2, a3, b1, b2, b3, K1, K2, K3, n1, n2, n3;
+
+  // Unit definitions:
+  unit substance = mole;
+  unit volume = litre;
+  unit area = metre^2;
+  unit length = metre;
+  unit time_unit = second;
+
+  // Display Names:
+  time_unit is "time";
+  b1 is "b2";
+end
